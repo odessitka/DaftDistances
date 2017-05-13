@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-from DaftDistances.settings import BASE_DIR
+from mysite.settings import BASE_DIR
 
 dbfile= os.path.join(BASE_DIR, 'db.sqlite3')
 

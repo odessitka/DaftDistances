@@ -40,13 +40,13 @@ class CommuteMatrix:
         return self.__near_by_dart
 
     def get_distance_duration_matrix(self):
-        gmaps = googlemaps.Client(key='AIzaSyCpqCdiOg69YK9-tf2YOPLXRVXGxPuabPk')
+        gmaps = googlemaps.Client(key='AIzaSyDtDQB41Vx7014RMCBqXiQQctjCE9FIs74')
         matrix = gmaps.distance_matrix(self.origin_address, self.destination_address, transit_mode="walking")
         print(matrix)
         return matrix["rows"][0]["elements"][0]["distance"]["value"], matrix["rows"][0]["elements"][0]["duration"]["text"], matrix["rows"][0]["elements"][0]["duration"]["value"]
 
     def get_dart_distance_matrix(self):
-        gmaps = googlemaps.Client(key='AIzaSyCpqCdiOg69YK9-tf2YOPLXRVXGxPuabPk')
+        gmaps = googlemaps.Client(key='AIzaSyDtDQB41Vx7014RMCBqXiQQctjCE9FIs74')
         matrix = gmaps.distance_matrix(self.origin_address, dart_stations, transit_mode="walking")
 
         combined = dict(zip(dart_stations, matrix["rows"][0]["elements"]))
