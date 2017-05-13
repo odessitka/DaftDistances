@@ -1,5 +1,7 @@
 import googlemaps
 
+GOOGLE_KEY = 'AIzaSyDtDQB41Vx7014RMCBqXiQQctjCE9FIs74'
+
 dart_stations = ["Grand Canal Dock Train Station","Lansdowne Road Train Station", "Sandymount Train Station",
                 "Sydney Parade Train Station", "Blackrock Train Station","Booterstown Train Station",
                 "Seapoint Train Station", "Salthill And Monkstown Train Station","Dun Laoghaire (Mallin) Station", "Sandycove & Glasthule Dart Station" ]
@@ -40,13 +42,13 @@ class CommuteMatrix:
         return self.__near_by_dart
 
     def get_distance_duration_matrix(self):
-        gmaps = googlemaps.Client(key='AIzaSyDtDQB41Vx7014RMCBqXiQQctjCE9FIs74')
+        gmaps = googlemaps.Client(key=GOOGLE_KEY)
         matrix = gmaps.distance_matrix(self.origin_address, self.destination_address, transit_mode="walking")
         print(matrix)
         return matrix["rows"][0]["elements"][0]["distance"]["value"], matrix["rows"][0]["elements"][0]["duration"]["text"], matrix["rows"][0]["elements"][0]["duration"]["value"]
 
     def get_dart_distance_matrix(self):
-        gmaps = googlemaps.Client(key='AIzaSyDtDQB41Vx7014RMCBqXiQQctjCE9FIs74')
+        gmaps = googlemaps.Client(key=GOOGLE_KEY)
         matrix = gmaps.distance_matrix(self.origin_address, dart_stations, transit_mode="walking")
 
         combined = dict(zip(dart_stations, matrix["rows"][0]["elements"]))
@@ -54,7 +56,7 @@ class CommuteMatrix:
         sorted_distances = sorted(station_distances, key=lambda x: x[1]["distance"]["value"])
         index = sorted_distances[0][0]
         return sorted_distances[0][1]["distance"]["text"], sorted_distances[0][1]["distance"]["value"], matrix["destination_addresses"][index]
-        #return sorted_distances[0][1]["duration"]["text"], sorted_distances[0][1]["duration"]["value"], matrix["destination_addresses"][index]
+
 
 class House:
     def __init__(self, box):
