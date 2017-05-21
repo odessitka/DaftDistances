@@ -20,7 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url('', admin.site.urls),
     url(r'^distances/', include('Distances.urls')),
-    url(r'^admin/', admin.site.urls),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^', admin.site.urls)
+    ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
