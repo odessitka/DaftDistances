@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from adminplus.sites import AdminSitePlus
 
+from mysite import views
 
 admin.site = AdminSitePlus()
 admin.sites.site = admin.site
@@ -30,4 +31,5 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^distances/', include('distances.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.index),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
