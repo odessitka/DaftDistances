@@ -31,8 +31,10 @@ ALLOWED_HOSTS = ['djcloud.azurewebsites.net','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    "Distances.apps.DistancesConfig",
-    'django.contrib.admin',
+    "distances.apps.distancesConfig",
+    'django.contrib.admin.apps.SimpleAdminConfig',
+    'adminplus',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
