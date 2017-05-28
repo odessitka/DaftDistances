@@ -13,15 +13,6 @@ def index(request):
     return HttpResponse("Hello, world. Here you will find useful info soon")
 
 
-# Create your views here.
-@admin.site.register_view('distances/process-data', visible=False)
-def process_data(request):
-    # daft_search.main()
-    max_price = request.POST.get('max_price')
-    areas = request.POST.get('areas')
-    return HttpResponse(f"data grabbed!!!{max_price}{areas}")
-
-
 @admin.site.register_view('distances/grabdata', name="Grab Data")
 def grabdata(request):
     # if this is a POST request we need to process the form data
@@ -31,12 +22,12 @@ def grabdata(request):
         # check whether it's valid:
         if form.is_valid():
             max_price = form.cleaned_data['max_price']
-            areas = form.cleaned_data['areas']
-            areas = 'blackrock, booterstown, dun-laoghaire, monkstown, sandymount'
-            # daft_search.extract_and_insert(areas, max_price)
-            # daft_search.calc_distances()
+            areas = ','.join(form.cleaned_data['areas'])
+            areas = "blackrock,booterstown,dun-laoghaire,monkstown,sandymount"
+            daft_search.extract_and_insert(areas, max_price)
+            daft_search.calc_distances()
             import time
-            time.sleep(100)
+            time.sleep(10)
             return HttpResponseRedirect('house/')
 
     # if a GET (or any other method) we'll create a blank form
