@@ -10,3 +10,4 @@ six==1.10.0
 bs4
 html5lib
 google-distance-matrix
+django-adminplus

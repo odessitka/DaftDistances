@@ -1,6 +1,6 @@
 import urllib, re, sqlite3, googlemaps
 from bs4 import BeautifulSoup
-from Distances.utils import dbhelpers, HelperClasses
+from distances.utils import dbhelpers, HelperClasses
 import logging
 price = 1850
 areas = 'blackrock,booterstown,dun-laoghaire,monkstown,sandymount'
@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    extract_and_insert()
+    extract_and_insert(areas, price)
     calc_distances()
 
 
@@ -26,7 +26,7 @@ def calc_distances():
             pass
 
 
-def extract_and_insert():
+def extract_and_insert(areas, price):
     offset = 0
     while True:
         html_of_search = urllib.request.urlopen(url.format(areas, price, offset)).read()
