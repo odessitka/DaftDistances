@@ -12,7 +12,7 @@ With screen-scrapping technique we extract data and save them in the database. T
 Process workflow:
 
 ![Screen-scrapping -> Insert data into DB -> Calculate distances -> Updating database](https://user-images.githubusercontent.com/26461970/26887329-a81a5a78-4b9f-11e7-8822-ccdea9a62948.jpg)
-
+![Screen-scrapping -> Insert data into DB -> Calculate distances -> Updating database]<img src='https://user-images.githubusercontent.com/26461970/26887329-a81a5a78-4b9f-11e7-8822-ccdea9a62948.jpg'>
 
 ## Workflow details:
 1. Screen-scrapping. With search criteria from the user we screen-scrap Daft, and use BeautifulSoup for reading the response. For every property we extract renting price, address and url.
