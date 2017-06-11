@@ -16,6 +16,7 @@ class CommuteMatrix:
         self.__duration = int((matrix[0])*60/5000)
         #self.__sorting_time = matrix[2]
         dart = self.get_dart_distance_matrix()
+        print(dart)
         self.__time_to_dart = dart[0]
         self.__dart_sorting = dart[1]
         #cleaning address of Dart (near_by_dart) from extra information
