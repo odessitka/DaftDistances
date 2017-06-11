@@ -34,6 +34,6 @@ def extract_and_insert(areas, price):
         boxes = soup_of_search.find_all('div', "box")
         if len(boxes) == 0: break
         for box in boxes:
-            house = HelperClasses.House(box)
+            house = HelperClasses.HelperHouse(box)
             dbhelpers.insert_house(house.price, house.address, house.url, house.image)
         offset += 20

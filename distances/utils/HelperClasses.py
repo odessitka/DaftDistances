@@ -22,6 +22,20 @@ class CommuteMatrix:
         #cleaning address of Dart (near_by_dart) from extra information
         self.__near_by_dart = dart[2].split(",")[0]
 
+    # print(dart) results:
+    # {'destination_addresses': ['Block 1, Blackrock Business Park, Blackrock, Dublin, Ireland'],
+    #  'origin_addresses': ['Clarinda Park W, Glasthule, Dublin, Ireland'], 'rows': [{'elements': [
+    #     {'distance': {'text': '4.0 km', 'value': 3970}, 'duration': {'text': '12 mins', 'value': 690},
+    #      'status': 'OK'}]}], 'status': 'OK'}
+    # ('0.6 km', 561, 'Sandycove & Glasthule Dart Station, Bóthar Chnoc an Línsigh, Dún Laoghaire, Dublin, Ireland')
+    #
+    # {'destination_addresses': ['Block 1, Blackrock Business Park, Blackrock, Dublin, Ireland'],
+    #  'origin_addresses': ['6 Stradbrook Rd, Mountashton, Blackrock, Co. Dublin, A94 V5W6, Ireland'], 'rows': [{ 'elements': [
+    #     { 'distance': {'text': '2.8 km','value': 2763},'duration': {'text': '7 mins', 'value': 410},
+    #       'status': 'OK'}]}], 'status': 'OK'}
+    # ('2.2 km', 2201, 'Longford Terrace, Monkstown, Co. Dublin, Ireland')
+
+
     @property
     def distance(self):
         return self.__distance
@@ -59,7 +73,7 @@ class CommuteMatrix:
         return sorted_distances[0][1]["distance"]["text"], sorted_distances[0][1]["distance"]["value"], matrix["destination_addresses"][index]
 
 
-class House:
+class HelperHouse:
     def __init__(self, box):
         ad_a = box.find("a")
         address_full = ad_a.text
